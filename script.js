@@ -475,11 +475,10 @@ const dice = Array.from(
 // say we want to take the values of the movements from the ui and cslc the balance
 
 labelBalance.addEventListener("click", function () {
-  const movHtml = document.querySelectorAll(".movements__value");//this only shows all the elements when it is attached to a callback fn
+  const movHtml = document.querySelectorAll(".movements__value"); //this only shows all the elements when it is attached to a callback fn
   // console.log(movHtml);
   console.log(Array.from(movHtml));
 });
-
 
 // coding challenge 4
 // Coding Challenge #4
@@ -509,10 +508,46 @@ GOOD LUCK 😀
 */
 
 const dogs = [
-  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
-  { weight: 8, curFood: 200, owners: ['Matilda'] },
-  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
-  { weight: 32, curFood: 340, owners: ['Michael'] },
+  { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
+  { weight: 8, curFood: 200, owners: ["Matilda"] },
+  { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
+  { weight: 32, curFood: 340, owners: ["Michael"] },
 ];
-dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)));
+1;
+console.log(
+  dogs.forEach((dog) => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)))
+);
 
+2;
+const dogSarah = dogs.find((dog) => dog.owners.includes("Sarah"));
+console.log(
+  `Sarah's dog is eating too ${
+    dogSarah.curFood > dogSarah.recFood ? "much" : "little"
+  }`
+);
+
+3;
+const ownersEatTooMuch = dogs
+  .filter((dog) => dog.curFood > dog.recFood)
+  .flatMap((dog) => dog.owners);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs
+  .filter((dog) => dog.curFood < dog.recFood)
+  .flatMap((dog) => dog.owners);
+console.log(ownersEatTooLittle);
+
+4;
+console.log(`${ownersEatTooMuch.join(" and ")} eat too much`);
+console.log(`${ownersEatTooLittle.join(" and ")} eat too little`);
+5;
+console.log(dogs.some((dog) => dog.curFood === dog.recFood));
+6;
+const checkEatingOkay = (dog) =>
+  dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1;
+console.log(dogs.some(checkEatingOkay));
+7;
+console.log(dogs.filter(dog => dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10)));
+8.
+const dogsSorted = dogs.slice().sort((a, b) => a.recFood - b.recFood);
+console.log(dogsSorted);
